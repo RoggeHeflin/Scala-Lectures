@@ -19,8 +19,11 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
     else if (x > elem) new NonEmpty(elem, left, right incl x)
     else this
 
+//  def union(other: IntSet): IntSet =
+//    ((this.left union this.right) union other) incl this.elem
+
   def union(other: IntSet): IntSet =
-    ((this.left union this.right) union other) incl this.elem
+    this.left.union(this.right.union(other)).incl(this.elem)
 
   override def toString: String = "{" + left + elem + right + "}"
 }
